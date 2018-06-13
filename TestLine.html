@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>测试画线</title>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.js"></script>
+    <script src="https://lc.dbazure.cn/dbfxui/dbfx.web.controls.js"></script>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.commodel.js"></script>
+    <script src="dbfx.web.draw.js"></script>
+
+
+</head>
+<body>
+
+<div id="layoutroot" style="height:1884px;width:900px;border:1px solid blue">
+
+    <!--<canvas class="canvas" style="height: 600px;width: 900px;border: 2px solid green;display: inline-block">-->
+
+    <!--</canvas>-->
+
+    <canvas class="canvas" width="900" height="1884" style="border:1px solid #d3d3d3;width: 900px;height: 1884px;">
+        您的浏览器不支持canvas标签显示
+    </canvas>
+
+    <!--<canvas class="canvas" width="900" height="1884" style="border:1px solid #d3d3d3;">-->
+        <!--您的浏览器不支持canvas标签显示-->
+    <!--</canvas>-->
+
+
+    <button type="button" value="方桌" onclick="creatRectTable02()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >2人桌
+
+    </button>
+
+    <button type="button" value="方桌" onclick="creatRectTable04()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >4人桌
+
+    </button>
+
+    <button type="button" value="方桌" onclick="creatRectTable06()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >6人桌
+
+    </button>
+
+    <button type="button" value="矩形" onclick="creatRect()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >矩形
+
+    </button>
+
+
+    <button type="button" value="吧台" onclick="creatBar()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >吧台
+
+    </button>
+
+    <button type="button" value="入口" onclick="creatEntrance()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >入口
+
+    </button>
+
+
+    <button type="button" value="圆桌" onclick="creatArcTable()" style="margin-left: 20px;background-color: #b3d4fc;width: 50px;height: 30px;font-size: 15px" >圆桌
+
+    </button>
+    <button type="button" value="隔断" onclick="creatPartition()" style="margin-left: 20px;background-color: #b3d4fc;width: 50px;height: 30px;font-size: 15px" >隔断
+
+    </button>
+    <button type="button" value="通道" onclick="creatAisle()" style="margin-left: 20px;background-color: #b3d4fc;width: 50px;height: 30px;font-size: 15px" >通道
+
+    </button>
+    <button type="button" value="安全出口" onclick="creatExit()" style="margin-left: 20px;background-color: #b3d4fc;width: 100px;height: 30px;font-size: 15px" >安全出口
+
+    </button>
+    <button type="button" value="卫生间" onclick="creatToilet()" style="margin-left: 20px;background-color: #b3d4fc;width: 70px;height: 30px;font-size: 15px" >卫生间
+
+    </button>
+
+    <button type="button" value="标识" onclick="creatTextArea()" style="margin-left: 20px;background-color: #b3d4fc;width: 70px;height: 30px;font-size: 15px" >标识
+
+    </button>
+
+
+    <button type="button" value="切换模式" onclick="changeMode()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >切换模式
+
+    </button>
+
+    <button type="button" value="保存数据" onclick="saveDatas()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >保存数据
+
+    </button>
+    
+    <button type="button" value="读取数据" onclick="readDatas()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >读取数据
+
+    </button>
+
+    <button type="button" value="删除图形" onclick="removeShape()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >删除图形
+
+    </button>
+
+    <button type="button" value="绘制路径" onclick="drawRoute()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >绘制路径
+
+    </button>
+
+    <button type="button" value="放大" onclick="forscale()" style="margin-left: 20px;background-color: #b3d4fc;width: 80px;height: 30px;font-size: 15px" >放大
+
+    </button>
+
+    <div style="width: 900px;height: 300px;border: 2px solid cornflowerblue;overflow: auto;margin-top: 10px">
+        <b>控制台输出：</b>
+        <p class="print" style="display: block;height: 300px;width: 900px;">
+        </p>
+    </div>
+
+    <button type="button" value="清除" onclick="clearPrint()" style="margin-left: 20px;background-color: red;width: 100px;height: 40px;font-size: 22px" >清除
+
+    </button>
+
+
+
+
+</div>
+
+<script>
+    function clearPrint() {
+        document.getElementsByClassName('print')[0].innerHTML = '';
+    }
+
+
+    try{
+
+
+        DBFX.Web.Draw.Tools.print("+++++++++");
+        var dv = new DBFX.Web.Draw.DrawView();
+//        layoutroot.appendChild(dv.canvas);
+//        dv.canvas.style.width = 300;
+//        dv.canvas.style.height = 150;
+//        dv.canvas.style.border = "2px solid green";
+//        dv.canvas.style.display = "inline-block";
+
+    }catch (error){
+
+       DBFX.Web.Draw.Tools.print(error);
+    }
+
+    function forscale() {
+//        dv.shapes.forEach(function (t) {
+//           t.scale.x = 2;
+//           t.scale.y = 2;
+//        });
+//        dv.draw();
+        dv.Scale(1.5,2);
+    }
+
+    function drawRoute() {
+        dv.drawRoute();
+    }
+
+    function creatRect() {
+        var rect = new DBFX.Web.Draw.Rect(300,900,100,100);
+        rect.fillStyle = "transparent";
+        rect.lineWidth = 2;
+        rect.alpha = 1;
+        rect.isVisible = false;
+        dv.shapes.push(rect);
+        dv.draw();
+
+//        try{
+//            dv.drawMinPath("CH01","21");
+//        }catch (error){
+//            DBFX.Web.Draw.Tools.print(error);
+//        }
+
+
+    }
+    function creatRectTable02() {
+
+        try {
+            for (var i=0;i<1;i++){
+             var table = new DBFX.Web.Draw.RectTable(300,1000,150,90);
+           table.strokeStyle = "black";
+           table.deskColor = "#FFAB7E";
+    //       table.tableColor = "black";
+    //        table.tableNum = "餐桌";
+           table.personCount = 2;
+           table.alpha = 1.0;
+           table.lineWidth = 1;
+            dv.shapes.push(table);
+            }
+
+            dv.draw();
+        }catch (error){
+            DBFX.Web.Draw.Tools.print(error);
+        }
+
+    }
+
+    function creatRectTable04() {
+        for (var i=0;i<1;i++){
+             var table = new DBFX.Web.Draw.RectTable(300,1000,150,90);
+       table.strokeStyle = "black";
+       table.deskColor = "#FFAB7E";
+//       table.tableColor = "black";
+//        table.tableNum = "餐桌";
+       table.personCount = 4;
+       table.alpha = 1.0;
+//       table.scale = {x:2,y:2};
+//       table.rotateAngle = Math.PI/2;
+       table.lineWidth = 1;
+        dv.shapes.push(table);
+        }
+
+        dv.draw();
+    }
+
+    function creatRectTable06() {
+        for (var i=0;i<1;i++){
+             var table = new DBFX.Web.Draw.RectTable(300,1000,150,90);
+       table.strokeStyle = "black";
+       table.deskColor = "#FFAB7E";
+//       table.tableColor = "black";
+//        table.tableNum = "餐桌";
+       table.personCount = 6;
+       table.alpha = 1.0;
+       table.lineWidth = 1;
+        dv.shapes.push(table);
+        }
+
+        dv.draw();
+    }
+
+    
+    function creatArcTable() {
+        try {
+            var arcTable = new DBFX.Web.Draw.ArcTable();
+            arcTable.alpha = 1;
+            arcTable.tableColor = "red";
+            arcTable.deskColor = "black";
+            arcTable.strokeStyle = "black";
+    //        arcTable.DeSerialization();
+            arcTable.personCount = 7;
+            dv.shapes.push(arcTable);
+            dv.draw();
+        }catch (error){
+            DBFX.Web.Draw.Tools.print(error);
+        }
+
+    }
+
+    function getNum(n) {
+        if(n<0){
+            return 0;
+        }
+        return n + getNum(n-1);
+    }
+
+    function creatBar() {
+//        DBFX.Web.Draw.Tools.print("hello");
+//        DBFX.Web.Draw.Tools.print(getNum(31736));
+//        DBFX.Web.Draw.Tools.print("Bye");
+        var bar = new DBFX.Web.Draw.BarCounter(300,900,300);
+        dv.shapes.push(bar);
+        dv.draw();
+    }
+
+    function creatEntrance() {
+        var entrance = new DBFX.Web.Draw.Entrance(300,900,300);
+
+        dv.shapes.push(entrance);
+        dv.draw();
+    }
+
+    
+    function creatPartition() {
+        var partition = new DBFX.Web.Draw.Partition(300,900,100,25);
+        partition.alpha = 0.5;
+        partition.strokeStyle = "black";
+        dv.shapes.push(partition);
+        dv.draw();
+    }
+    
+    function creatAisle() {
+        var aisle = new DBFX.Web.Draw.Aisle(300,900,10,100);
+        aisle.alpha = 1;
+        dv.shapes.push(aisle);
+        dv.draw();
+    }
+    
+    function creatExit() {
+        var exit = new DBFX.Web.Draw.Exit(300,900,80);
+        exit.alpha = 1.0;
+        dv.shapes.push(exit);
+        dv.draw();
+    }
+
+    function creatToilet() {
+        try{
+            var toilet = new DBFX.Web.Draw.Toilet(300,800,80);
+        }catch (error){
+            DBFX.Web.Draw.Tools.print(error);
+        }
+
+        toilet.alpha = 1.0;
+        dv.shapes.push(toilet);
+        dv.draw();
+    }
+
+    function creatTextArea() {
+        var textArea = new DBFX.Web.Draw.TextArea(300,800,80);
+        dv.shapes.push(textArea);
+        dv.draw();
+
+    }
+
+    function changeMode() {
+//        DBFX.Web.Draw.Tools.print("模式切换");
+        dv.changeMode();
+
+    }
+
+    var json = undefined;
+    //保存数据
+    function saveDatas() {
+       json = dv.saveContext();
+//       DBFX.Web.Draw.Tools.print(json);
+    }
+
+
+    json = "{\"mode\":1,\"shapes\":[{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":873,\"minY\":-12,\"maxX\":896,\"maxY\":1908},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":826,\"minY\":1833,\"maxX\":868,\"maxY\":1862,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"65\",\"isVisible\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":548,\"minY\":1833,\"maxX\":592,\"maxY\":1861,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":776,\"minY\":1833,\"maxX\":811,\"maxY\":1859,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":725,\"minY\":1834,\"maxX\":759,\"maxY\":1861,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"21\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":614,\"minY\":1832,\"maxX\":651,\"maxY\":1859,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":670,\"minY\":1834,\"maxX\":706,\"maxY\":1860,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":536,\"minY\":1638,\"maxX\":574,\"maxY\":1664,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":535,\"minY\":1680,\"maxX\":575,\"maxY\":1706,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":535,\"minY\":1720,\"maxX\":574,\"maxY\":1748,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":535,\"minY\":1760,\"maxX\":575,\"maxY\":1787,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\"},{\"shapeClass\":\"DBFX.Web.Draw.Exit\",\"shapeType\":\"Exit\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":456,\"minY\":1606,\"maxX\":525,\"maxY\":1635},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":300,\"minY\":9000,\"maxX\":310,\"maxY\":9100},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":300,\"minY\":9000,\"maxX\":310,\"maxY\":9100},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":579,\"minY\":1743,\"maxX\":873,\"maxY\":1754,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":577,\"minY\":1647,\"maxX\":870,\"maxY\":1660,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":580,\"minY\":1556,\"maxX\":871,\"maxY\":1569,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":829,\"minY\":1531,\"maxX\":858,\"maxY\":1553,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":679,\"minY\":1492,\"maxX\":709,\"maxY\":1517,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":678,\"minY\":1530,\"maxX\":709,\"maxY\":1553,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":1.5582969777755349},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":829,\"minY\":1493,\"maxX\":859,\"maxY\":1516,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":580,\"minY\":1475,\"maxX\":870,\"maxY\":1488,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":578,\"minY\":1386,\"maxX\":869,\"maxY\":1399,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":525,\"minY\":1819,\"maxX\":871,\"maxY\":1830,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":536,\"minY\":1439,\"maxX\":576,\"maxY\":1467,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":535,\"minY\":1402,\"maxX\":576,\"maxY\":1429,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":537,\"minY\":1482,\"maxX\":576,\"maxY\":1510,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":537,\"minY\":1521,\"maxX\":576,\"maxY\":1550,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":536,\"minY\":1361,\"maxX\":576,\"maxY\":1388,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":524,\"minY\":1088,\"maxX\":559,\"maxY\":1112,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":472,\"minY\":1086,\"maxX\":506,\"maxY\":1109,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":525,\"minY\":1118,\"maxX\":559,\"maxY\":1141,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":473,\"minY\":1117,\"maxX\":506,\"maxY\":1140,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":524,\"minY\":1150,\"maxX\":559,\"maxY\":1172,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":474,\"minY\":1147,\"maxX\":508,\"maxY\":1171,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":393,\"minY\":1200,\"maxX\":430,\"maxY\":1226,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":394,\"minY\":1100,\"maxX\":430,\"maxY\":1126,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":394,\"minY\":1135,\"maxX\":430,\"maxY\":1159,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":393,\"minY\":1167,\"maxX\":430,\"maxY\":1193,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":433,\"minY\":1189,\"maxX\":592,\"maxY\":1202,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":385,\"minY\":1052,\"maxX\":605,\"maxY\":1061,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":412,\"minY\":119,\"maxX\":427,\"maxY\":513,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":455,\"minY\":1016,\"maxX\":494,\"maxY\":1041,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":424,\"minY\":1016,\"maxX\":464,\"maxY\":1043,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":510,\"minY\":1087,\"maxX\":521,\"maxY\":1203,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":384,\"minY\":949,\"maxX\":494,\"maxY\":960,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":424,\"minY\":874,\"maxX\":459,\"maxY\":896,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":428,\"minY\":920,\"maxX\":459,\"maxY\":943,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":425,\"minY\":826,\"maxX\":459,\"maxY\":849,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":455,\"minY\":827,\"maxX\":489,\"maxY\":849,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":381,\"minY\":857,\"maxX\":492,\"maxY\":866,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":426,\"minY\":703,\"maxX\":460,\"maxY\":726,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":1.5544043524868913},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":427,\"minY\":747,\"maxX\":458,\"maxY\":768,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":462,\"minY\":787,\"maxX\":480,\"maxY\":809,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":433,\"minY\":786,\"maxX\":451,\"maxY\":809,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":1.5569083308639295},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":311,\"minY\":776,\"maxX\":592,\"maxY\":787,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":382,\"minY\":684,\"maxX\":488,\"maxY\":695,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":182,\"minY\":594,\"maxX\":488,\"maxY\":605,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":423,\"minY\":522,\"maxX\":457,\"maxY\":546,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"01\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":280,\"minY\":713,\"maxX\":303,\"maxY\":736,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":317,\"minY\":715,\"maxX\":338,\"maxY\":737,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":282,\"minY\":640,\"maxX\":303,\"maxY\":662,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":281,\"minY\":677,\"maxX\":302,\"maxY\":699,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":316,\"minY\":641,\"maxX\":338,\"maxY\":662,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":317,\"minY\":678,\"maxX\":338,\"maxY\":700,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":178,\"minY\":502,\"maxX\":494,\"maxY\":513,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":430,\"minY\":414,\"maxX\":450,\"maxY\":435,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":429,\"minY\":446,\"maxX\":450,\"maxY\":467,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":413,\"minY\":374,\"maxX\":499,\"maxY\":387,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":502,\"minY\":338,\"maxX\":534,\"maxY\":361,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":503,\"minY\":283,\"maxX\":535,\"maxY\":303,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":502,\"minY\":368,\"maxX\":534,\"maxY\":391,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":449,\"minY\":307,\"maxX\":481,\"maxY\":329,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":502,\"minY\":307,\"maxX\":534,\"maxY\":329,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":415,\"minY\":253,\"maxX\":592,\"maxY\":264,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":500,\"minY\":156,\"maxX\":529,\"maxY\":177,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":452,\"minY\":183,\"maxX\":481,\"maxY\":207,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":500,\"minY\":213,\"maxX\":529,\"maxY\":235,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":501,\"minY\":185,\"maxX\":530,\"maxY\":206,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":309,\"minY\":118,\"maxX\":673,\"maxY\":133,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Exit\",\"shapeType\":\"Exit\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":190,\"minY\":241,\"maxX\":250,\"maxY\":264,\"rotateAngle\":1.5549246438031066},{\"shapeClass\":\"DBFX.Web.Draw.Entrance\",\"shapeType\":\"Entrance\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":160,\"minY\":111,\"maxX\":230,\"maxY\":146,\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.BarCounter\",\"shapeType\":\"BarCounter\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":246,\"minY\":53,\"maxX\":341,\"maxY\":82,\"chineseText\":\"吧 台\",\"englishText\":\"Bar Counter\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":377,\"minY\":56,\"maxX\":606,\"maxY\":65,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":463,\"minY\":58,\"maxX\":476,\"maxY\":133,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":493,\"minY\":635,\"maxX\":552,\"maxY\":663,\"chineseText\":\"取 餐 区\",\"englishText\":\"TakeAway\",\"rotateAngle\":1.5480729659532555},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":623,\"minY\":940,\"maxX\":678,\"maxY\":965,\"chineseText\":\"取 餐 区\",\"englishText\":\"TakeAway\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":528,\"minY\":428,\"maxX\":581,\"maxY\":451,\"chineseText\":\"取 餐 区\",\"englishText\":\"TakeAway\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":525,\"minY\":1865,\"maxX\":871,\"maxY\":1881,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":507,\"minY\":1367,\"maxX\":523,\"maxY\":1602,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":507,\"minY\":1637,\"maxX\":524,\"maxY\":1887,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":167,\"minY\":806,\"maxX\":181,\"maxY\":920,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":255,\"minY\":639,\"maxX\":270,\"maxY\":804,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":166,\"minY\":791,\"maxX\":256,\"maxY\":804,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":167,\"minY\":922,\"maxX\":367,\"maxY\":934,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":212,\"minY\":2,\"maxX\":874,\"maxY\":18,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":212,\"minY\":19,\"maxX\":229,\"maxY\":98,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":213,\"minY\":159,\"maxX\":229,\"maxY\":223,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":177,\"minY\":648,\"maxX\":253,\"maxY\":662,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":486,\"minY\":154,\"maxX\":498,\"maxY\":385,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":159,\"maxX\":410,\"maxY\":187,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":449,\"minY\":337,\"maxX\":483,\"maxY\":362,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":450,\"minY\":212,\"maxX\":481,\"maxY\":234,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":318,\"maxX\":410,\"maxY\":346,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":359,\"maxX\":409,\"maxY\":386,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":198,\"maxX\":410,\"maxY\":225,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":373,\"minY\":278,\"maxX\":409,\"maxY\":305,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":399,\"maxX\":410,\"maxY\":425,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":371,\"minY\":441,\"maxX\":409,\"maxY\":469,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":239,\"maxX\":409,\"maxY\":266,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":421,\"minY\":563,\"maxX\":459,\"maxY\":585,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5567127509720364},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":381,\"minY\":502,\"maxX\":391,\"maxY\":1059,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":457,\"minY\":751,\"maxX\":477,\"maxY\":775,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":459,\"minY\":696,\"maxX\":480,\"maxY\":722,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"000\",\"rotateAngle\":1.5567127509720364},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":433,\"minY\":1053,\"maxX\":442,\"maxY\":1231,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":304,\"minY\":594,\"maxX\":314,\"maxY\":741,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":422,\"minY\":962,\"maxX\":427,\"maxY\":1051,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":578,\"minY\":1189,\"maxX\":591,\"maxY\":1830,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":534,\"minY\":69,\"maxX\":567,\"maxY\":94,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":499,\"minY\":70,\"maxX\":529,\"maxY\":92,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":410,\"minY\":71,\"maxX\":442,\"maxY\":92,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":70,\"maxX\":404,\"maxY\":93,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":573,\"minY\":28,\"maxX\":603,\"maxY\":52,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":534,\"minY\":27,\"maxX\":567,\"maxY\":50,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":495,\"minY\":26,\"maxX\":527,\"maxY\":51,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":444,\"minY\":26,\"maxX\":477,\"maxY\":49,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":411,\"minY\":26,\"maxX\":442,\"maxY\":49,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":372,\"minY\":27,\"maxX\":401,\"maxY\":50,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":574,\"minY\":69,\"maxX\":603,\"maxY\":94,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5526165117219184},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":366,\"minY\":101,\"maxX\":439,\"maxY\":107,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":606,\"minY\":21,\"maxX\":611,\"maxY\":99,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":366,\"minY\":20,\"maxX\":372,\"maxY\":100,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":498,\"minY\":99,\"maxX\":610,\"maxY\":104,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":441,\"minY\":66,\"maxX\":447,\"maxY\":107,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":492,\"minY\":65,\"maxX\":498,\"maxY\":104,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":499,\"minY\":239,\"maxX\":534,\"maxY\":244,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":362,\"minY\":150,\"maxX\":411,\"maxY\":156,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":362,\"minY\":158,\"maxX\":368,\"maxY\":473,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":362,\"minY\":474,\"maxX\":411,\"maxY\":481,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":536,\"minY\":150,\"maxX\":541,\"maxY\":245,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":502,\"minY\":274,\"maxX\":540,\"maxY\":279,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":488,\"minY\":393,\"maxX\":539,\"maxY\":400,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":541,\"minY\":274,\"maxX\":547,\"maxY\":400,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":452,\"minY\":364,\"maxX\":484,\"maxY\":371,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":450,\"minY\":279,\"maxX\":484,\"maxY\":285,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":443,\"minY\":278,\"maxX\":449,\"maxY\":371,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":450,\"minY\":236,\"maxX\":482,\"maxY\":242,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":450,\"minY\":150,\"maxX\":536,\"maxY\":156,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":444,\"minY\":149,\"maxX\":448,\"maxY\":241,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":421,\"minY\":698,\"maxX\":426,\"maxY\":776,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":421,\"minY\":606,\"maxX\":427,\"maxY\":682,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":427,\"minY\":474,\"maxX\":457,\"maxY\":479,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":427,\"minY\":403,\"maxX\":455,\"maxY\":409,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":419,\"minY\":517,\"maxX\":425,\"maxY\":592,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":456,\"minY\":403,\"maxX\":462,\"maxY\":479,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":270,\"minY\":742,\"maxX\":355,\"maxY\":747,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":349,\"minY\":636,\"maxX\":354,\"maxY\":742,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":422,\"minY\":868,\"maxX\":427,\"maxY\":947,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":422,\"minY\":790,\"maxX\":427,\"maxY\":857,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":368,\"minY\":922,\"maxX\":381,\"maxY\":1330,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":350,\"minY\":797,\"maxX\":355,\"maxY\":919,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":349,\"minY\":748,\"maxX\":354,\"maxY\":773,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":493,\"minY\":790,\"maxX\":498,\"maxY\":1049,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":490,\"minY\":517,\"maxX\":495,\"maxY\":771,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":606,\"minY\":140,\"maxX\":671,\"maxY\":256,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":675,\"minY\":21,\"maxX\":868,\"maxY\":1332,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":463,\"minY\":1079,\"maxX\":571,\"maxY\":1084,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":464,\"minY\":1084,\"maxX\":469,\"maxY\":1174,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":564,\"minY\":1085,\"maxX\":569,\"maxY\":1170,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":593,\"minY\":133,\"maxX\":603,\"maxY\":1054,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":550,\"minY\":197,\"maxX\":606,\"maxY\":226,\"chineseText\":\"取 餐 区\",\"englishText\":\"TakeAway\",\"rotateAngle\":1.5601584302193552},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":622,\"minY\":406,\"maxX\":674,\"maxY\":431,\"chineseText\":\"取 餐 区\",\"englishText\":\"TakeAway\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":626,\"minY\":261,\"maxX\":668,\"maxY\":605,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":503,\"minY\":518,\"maxX\":545,\"maxY\":770,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":626,\"minY\":631,\"maxX\":669,\"maxY\":1336,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.BarCounter\",\"shapeType\":\"BarCounter\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":362,\"minY\":1263,\"maxX\":431,\"maxY\":1286,\"chineseText\":\"吧 台\",\"englishText\":\"Bar Counter\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":472,\"minY\":1354,\"maxX\":513,\"maxY\":1364,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0.3805063771123649},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":384,\"minY\":1231,\"maxX\":484,\"maxY\":1240,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":479,\"minY\":1317,\"maxX\":503,\"maxY\":1322,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":479,\"minY\":1330,\"maxX\":503,\"maxY\":1335,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":478,\"minY\":1304,\"maxX\":502,\"maxY\":1309,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":484,\"minY\":1230,\"maxX\":493,\"maxY\":1302,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Aisle\",\"shapeType\":\"Aisle\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":519,\"minY\":1315,\"maxX\":590,\"maxY\":1328,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Entrance\",\"shapeType\":\"Entrance\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":379,\"minY\":1349,\"maxX\":447,\"maxY\":1382,\"rotateAngle\":0.4398425828157362},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":236,\"minY\":118,\"maxX\":273,\"maxY\":124,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":236,\"minY\":148,\"maxX\":272,\"maxY\":154,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":237,\"minY\":133,\"maxX\":272,\"maxY\":138,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":214,\"minY\":466,\"maxX\":253,\"maxY\":491,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":214,\"minY\":613,\"maxX\":254,\"maxY\":637,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5567127509720364},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":181,\"minY\":611,\"maxX\":219,\"maxY\":637,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":179,\"minY\":465,\"maxX\":223,\"maxY\":492,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5551725981744198},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":230,\"minY\":363,\"maxX\":349,\"maxY\":376,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":213,\"minY\":287,\"maxX\":229,\"maxY\":376,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":680,\"minY\":1795,\"maxX\":870,\"maxY\":1800,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":676,\"minY\":1603,\"maxX\":870,\"maxY\":1608,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":677,\"minY\":1698,\"maxX\":871,\"maxY\":1703,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":671,\"minY\":1663,\"maxX\":676,\"maxY\":1739,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":670,\"minY\":1490,\"maxX\":675,\"maxY\":1558,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":676,\"minY\":1519,\"maxX\":872,\"maxY\":1525,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":670,\"minY\":1572,\"maxX\":675,\"maxY\":1647,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":672,\"minY\":1759,\"maxX\":677,\"maxY\":1800,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":677,\"minY\":1432,\"maxX\":871,\"maxY\":1438,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":670,\"minY\":1399,\"maxX\":675,\"maxY\":1474,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Rect\",\"shapeType\":\"Rect\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":671,\"minY\":1345,\"maxX\":676,\"maxY\":1383,\"fillStyle\":\"transparent\",\"lineWidth\":0.5,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Toilet\",\"shapeType\":\"Toilet\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":299,\"minY\":761,\"maxX\":347,\"maxY\":810,\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":462,\"minY\":924,\"maxX\":484,\"maxY\":947,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":461,\"minY\":866,\"maxX\":481,\"maxY\":890,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":215,\"minY\":562,\"maxX\":248,\"maxY\":587,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":183,\"minY\":521,\"maxX\":219,\"maxY\":545,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":215,\"minY\":522,\"maxX\":248,\"maxY\":546,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":184,\"minY\":562,\"maxX\":217,\"maxY\":586,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":426,\"minY\":655,\"maxX\":455,\"maxY\":679,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5458015331759765},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":458,\"minY\":569,\"maxX\":477,\"maxY\":591,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":2,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":459,\"minY\":609,\"maxX\":488,\"maxY\":632,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":459,\"minY\":963,\"maxX\":486,\"maxY\":987,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":427,\"minY\":609,\"maxX\":458,\"maxY\":634,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5499660067586796},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":455,\"minY\":655,\"maxX\":485,\"maxY\":678,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":427,\"minY\":966,\"maxX\":457,\"maxY\":990,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":729,\"minY\":1402,\"maxX\":757,\"maxY\":1427,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":777,\"minY\":1402,\"maxX\":807,\"maxY\":1427,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":683,\"minY\":1663,\"maxX\":710,\"maxY\":1688,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":831,\"minY\":1402,\"maxX\":861,\"maxY\":1427,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":780,\"minY\":1662,\"maxX\":809,\"maxY\":1689,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":830,\"minY\":1663,\"maxX\":859,\"maxY\":1689,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":730,\"minY\":1663,\"maxX\":760,\"maxY\":1689,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"rotateAngle\":1.5576391913221408},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":729,\"minY\":1760,\"maxX\":764,\"maxY\":1789,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":830,\"minY\":1759,\"maxX\":863,\"maxY\":1787,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":828,\"minY\":1710,\"maxX\":864,\"maxY\":1738,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":781,\"minY\":1709,\"maxX\":816,\"maxY\":1739,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":681,\"minY\":1759,\"maxX\":717,\"maxY\":1788,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5567127509720364},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":780,\"minY\":1759,\"maxX\":816,\"maxY\":1788,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":679,\"minY\":1710,\"maxX\":714,\"maxY\":1738,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":729,\"minY\":1710,\"maxX\":764,\"maxY\":1737,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"rotateAngle\":1.5707963267948966},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":300,\"minY\":535,\"maxX\":365,\"maxY\":569,\"chineseText\":\"酒 水 区\",\"englishText\":\"Drinks\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":428,\"minY\":1242,\"maxX\":482,\"maxY\":1265,\"chineseText\":\"等 候 区\",\"englishText\":\"Waiting\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":506,\"minY\":1310,\"maxX\":554,\"maxY\":1335,\"chineseText\":\"闸 机\",\"englishText\":\"CH01\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.TextArea\",\"shapeType\":\"TextArea\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":297,\"minY\":116,\"maxX\":344,\"maxY\":138,\"chineseText\":\"闸 机\",\"englishText\":\"CH02\",\"rotateAngle\":0},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":452,\"minY\":158,\"maxX\":474,\"maxY\":176,\"fillStyle\":\"black\",\"lineWidth\":\"1\",\"rotateAngle\":0,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":452,\"minY\":284,\"maxX\":471,\"maxY\":301,\"fillStyle\":\"black\",\"lineWidth\":\"1\",\"rotateAngle\":0,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":830,\"minY\":1572,\"maxX\":860,\"maxY\":1599,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":727,\"minY\":1491,\"maxX\":760,\"maxY\":1518,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":778,\"minY\":1569,\"maxX\":812,\"maxY\":1598,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":729,\"minY\":1570,\"maxX\":766,\"maxY\":1599,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":680,\"minY\":1570,\"maxX\":715,\"maxY\":1599,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":778,\"minY\":1491,\"maxX\":811,\"maxY\":1517,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":680,\"minY\":1400,\"maxX\":713,\"maxY\":1429,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":728,\"minY\":1527,\"maxX\":761,\"maxY\":1555,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":780,\"minY\":1528,\"maxX\":812,\"maxY\":1554,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":4,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":726,\"minY\":1446,\"maxX\":764,\"maxY\":1473,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":726,\"minY\":1351,\"maxX\":762,\"maxY\":1379,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":675,\"minY\":1351,\"maxX\":713,\"maxY\":1377,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":827,\"minY\":1350,\"maxX\":864,\"maxY\":1376,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5570985534220307,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":774,\"minY\":1351,\"maxX\":813,\"maxY\":1378,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":828,\"minY\":1444,\"maxX\":866,\"maxY\":1470,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":776,\"minY\":1444,\"maxX\":814,\"maxY\":1471,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":825,\"minY\":1615,\"maxX\":863,\"maxY\":1642,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":777,\"minY\":1613,\"maxX\":813,\"maxY\":1639,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":677,\"minY\":1446,\"maxX\":715,\"maxY\":1472,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":726,\"minY\":1616,\"maxX\":765,\"maxY\":1642,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.RectTable\",\"shapeType\":\"RectTable\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":677,\"minY\":1617,\"maxX\":716,\"maxY\":1643,\"deskColor\":\"#FFAB7E\",\"tableColor\":\"white\",\"personCount\":6,\"tableNum\":\"000\",\"fillStyle\":\"black\",\"lineWidth\":1,\"rotateAngle\":1.5707963267948966,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":177,\"minY\":435,\"maxX\":357,\"maxY\":448,\"fillStyle\":\"black\",\"lineWidth\":\"1\",\"rotateAngle\":0,\"allowClick\":true},{\"shapeClass\":\"DBFX.Web.Draw.Partition\",\"shapeType\":\"Partition\",\"strokeStyle\":\"black\",\"alpha\":1,\"minX\":161,\"minY\":434,\"maxX\":175,\"maxY\":662,\"fillStyle\":\"black\",\"lineWidth\":\"1\",\"rotateAngle\":0,\"allowClick\":true}]}";
+    dv.readContext(json);
+
+//    try{
+//            dv.drawMinPath("CH01","21");
+//        }catch (error){
+//            DBFX.Web.Draw.Tools.print(error);
+//        }
+
+    function readDatas() {
+        DBFX.Web.Draw.Tools.print("hahahaa");
+        try{
+            dv.readContext(json);
+        }catch (error){
+            DBFX.Web.Draw.Tools.print(error);
+        }
+
+    }
+
+//    dv.readContext(json);
+
+    function removeShape() {
+        dv.removeShape();
+    }
+
+
+    var segment01 = new DBFX.Web.Draw.Segment();
+    segment01.fromPoint.x = 35;
+    segment01.fromPoint.y = 10;
+
+    segment01.toPoint.x = 35;
+    segment01.toPoint.y = 100;
+
+
+    var segment02 = new DBFX.Web.Draw.Segment();
+    segment02.fromPoint.x = 30;
+    segment02.fromPoint.y = 10;
+
+    segment02.toPoint.x = 150;
+    segment02.toPoint.y = 10;
+
+    var node = DBFX.Web.Draw.Tools.getIntersection(segment01,segment02);
+    DBFX.Web.Draw.Tools.print(node);
+    DBFX.Web.Draw.Tools.print("x:"+node.x);
+    DBFX.Web.Draw.Tools.print("y:"+node.y);
+//    DBFX.Web.Draw.Tools.print("hello");
+
+    //收银台
+//    var cashier = new DBFX.Web.Draw.Cashier(100,100,200);
+//    dv.shapes.push(cashier);
+
+//    文字标识区域
+//    try {
+//        var textArea01 = new DBFX.Web.Draw.TextArea(200,200,100);
+//        dv.shapes.push(textArea01);
+//    }catch (error){
+//        DBFX.Web.Draw.Tools.print(error);
+//    }
+
+    //入口
+//    var entrance = new DBFX.Web.Draw.Entrance(300,300,200);
+//    dv.shapes.push(entrance);
+
+    //吧台
+//    var barCounter = new DBFX.Web.Draw.BarCounter(400,450,300);
+//    dv.shapes.push(barCounter);
+
+//    var arcTable = new DBFX.Web.Draw.ArcTable(400,505,70);
+////        arcTable.alpha = 0.5;
+//        arcTable.tableColor = "#7C481A";
+//        arcTable.deskColor = "black";
+//
+//        arcTable.personCount = 6;
+//        dv.shapes.push(arcTable);
+
+
+
+//    document.addEventListener('touchstart',touch,false);
+//    document.addEventListener('touchmove',touch,false);
+//    document.addEventListener('touchend',touch,false);
+//
+//    function touch(event) {
+//        DBFX.Web.Draw.Tools.print("touch");
+//        var event = event || window.event;
+//        switch (event.type){
+//            case "touchstart":
+//                DBFX.Web.Draw.Tools.print("touchstart");
+//                break;
+//            case "touchmove":
+//                DBFX.Web.Draw.Tools.print("touchmove");
+//                break;
+//            case "touchend":
+//                DBFX.Web.Draw.Tools.print("touchend");
+//                break;
+//
+//            default:
+//                break;
+//        }
+//    }
+
+
+//    var rect01 = new DBFX.Web.Draw.Rect(100,60,40,40);
+//    rect01.strokeStyle = "white";
+//    rect01.fillStyle = "red";
+//    rect01.cornerRadius = 10;
+//    dv.shapes.push(rect01);
+
+//
+
+
+//    var rect02 = new DBFX.Web.Draw.Rect(120,120,40,40,"green");
+//    rect02.cornerRadius = 10;
+//    rect02.strokeStyle = "white";
+//    dv.shapes.push(rect02);
+
+
+//    try{
+//        var arc01 = new DBFX.Web.Draw.Arc(220,60,30,0,Math.PI*2,0);
+//        arc01.fillStyle = "yellow";
+//        dv.shapes.push(arc01);
+//
+////        var polygon = new DBFX.Web.Draw.Polygon(50,50,30,5);
+////        dv.shapes.push(polygon);
+//    }catch (error){
+//        alert(error);
+//    }
+
+    try{
+        //方桌
+//        for(var i=0;i<1;i++){
+//            var table = new DBFX.Web.Draw.RectTable(60,90,150,90,6);
+//       table.strokeStyle = "black";
+//       table.lineWidth = 0.5;
+//        dv.shapes.push(table);
+//        }
+
+
+        //圆桌
+//        var arcTable = new DBFX.Web.Draw.ArcTable(120,75,70,5);
+//        arcTable.strokeStyle = "black";
+//        dv.shapes.push(arcTable);
+
+        //隔断
+//        var partition = new DBFX.Web.Draw.Partition(60,30,100,50);
+//        partition.strokeStyle = "black";
+//        dv.shapes.push(partition);
+
+        //通道
+//        var aisle = new DBFX.Web.Draw.Aisle(120,230,50,100);
+//        dv.shapes.push(aisle);
+
+        //安全出口
+//        var exit = new DBFX.Web.Draw.Exit(60,50,80);
+//        dv.shapes.push(exit);
+
+        //卫生间
+//        var toilet = new DBFX.Web.Draw.Toilet(160,80,80);
+//        dv.shapes.push(toilet);
+
+
+    }catch (error){
+        DBFX.Web.Draw.Tools.print(error);
+    }
+
+
+//    var rect = new DBFX.Web.Draw.Rect(10,10,40,40,"red");
+//    rect.strokeStyle = "white";
+//    dv.shapes.push(rect);
+
+//    var line = new DBFX.Web.Draw.Line(750,750,100,100);
+//
+//    line.lineWidth = 40;
+//    dv.shapes.push(line);
+//    alert(dv.shapes.length);
+
+
+
+
+    dv.draw();
+
+//    dv.saveContext();
+
+</script>
+</body>
+</html>
